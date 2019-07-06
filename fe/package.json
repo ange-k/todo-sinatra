@@ -24,6 +24,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "webpack-dev-server --host 0.0.0.0 --disable-host-check --content-base dist/",
     "start": "webpack-dev-server --hot --inline --watch-content-base --content-base dist/ --open-page index.html"
   },
   "author": "",

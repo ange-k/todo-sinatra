@@ -6,7 +6,7 @@ import axios from 'axios';
 window.onload = () => {
   const element = document.querySelector("#page--index");
 
-  axios.get('http://localhost:4567/hello')
+  axios.get('http://localhost:8080/hello') /* proxyの設定によりSinatraにアクセスが流れる */
   .then(function(response) {
     console.log(response);
   })

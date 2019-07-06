@@ -79,7 +79,13 @@ module.exports = {
       template: "./src/index.html",
       filename: "./index.html"
     })
-  ],
+	],
+	devServer: {
+    proxy: {
+      '/hello': 'http://sinatra-api-server:4567',
+      changeOrigin: true
+    }
+  },
 
 	output: {
     filename: "index.js",
