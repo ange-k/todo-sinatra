@@ -82,7 +82,8 @@ module.exports = {
 	],
 	devServer: {
     proxy: {
-      '/hello': 'http://sinatra-api-server:4567',
+			'/todos': 'http://sinatra-api-server:4567',
+			'/todo': 'http://sinatra-api-server:4567',
       changeOrigin: true
     }
   },
