@@ -20,3 +20,20 @@ docker-compose exec sinatra-api-server rake db:migrate
 ```
 docker-compose exec sinatra-api-server rake db:create_migration NAME=XXXXX
 ```
+
+# Frontend開発環境
+サーバ起動
+```
+npm start
+```
+
+# backend開発環境
+サーバ起動
+```
+./start.sh
+```
+
+アクセス
+```
+curl -X POST "http://localhost:8080/todo?title=buy&status=todo&user_name=user" 
+```

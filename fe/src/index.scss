@@ -1,3 +1,91 @@
- #page--index {
-   color: red;
+$back_base_color: #30424A;
+$front_base_color: #38535d;
+$min_width: 750px;
+
+html {
+  min-width: $min_width;
+}
+
+#page--index {
+  margin: 0;
+  background-color: #282B39;
+  color: #FFF;
+  header {
+    display: flex;
+    justify-content: center;
+    background-color: $back_base_color;
+  }
+  .view-area {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 1rem;
+    aside {
+      background-color: $back_base_color;
+      border-radius: 24px;
+      width: 40%;
+      height: 100vh;
+      padding: 0.5rem;
+
+      h2 {
+        margin: 0.5rem;
+      }
+
+      section {
+        background-color: $front_base_color;
+        margin: 0.5rem auto;
+        padding: 0.5rem;
+        width: 80%;
+
+        .svg-label {
+          width: 60px;
+        }
+
+        .form-column {
+          width: 100%;
+          display: flex;
+        }
+
+        label {
+          margin-left: 2rem;
+          margin-right: 0.5rem;
+        }
+
+        input {
+          margin: 0.5rem 0;
+          flex-grow: 5;
+        }
+
+        .btn {
+          display: flex;
+          justify-content: flex-end;
+          margin: 0.5rem;
+        }
+      }
+    }
+    main {
+      display: flex;
+      flex-wrap: wrap;
+      width: 55%;
+    }
+  }
+
+  .task {
+    width: 30%;
+  }
+
+  @media (max-width: $min_width) {
+    .view-area {
+      flex-direction: column;
+      aside {
+        width: 100%;
+        height: inherit;
+      }
+      main {
+        width: 100%;
+      }
+    }
+    .task {
+      width: 50%;
+    }
+  }
  }
