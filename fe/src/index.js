@@ -27,7 +27,7 @@ window.onload = () => {
   }
 
   //初期画面描画
-  axios.get('http://localhost:8080/todos') /* proxyの設定によりSinatraにアクセスが流れる */
+  axios.get('/api/todos') /* proxyの設定によりSinatraにアクセスが流れる */
   .then(function(response) {
     const data = response['data'];
     const fragment = document.createDocumentFragment();

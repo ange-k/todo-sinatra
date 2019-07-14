@@ -4,12 +4,12 @@ require './models/todo.rb'
 
 # オートリロード未対応.
 
-get '/todos' do
+get '/api/todos' do
   todos = Todo.all
   todos.to_json
 end
 
-post '/todo' do
+post '/api/todo' do
   p params
   title     = params['title']
   status    = params['status']

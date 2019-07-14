@@ -1,0 +1,35 @@
+version: '3'
+services:
+  frontend:
+    build:
+      context: ./fe
+    ports: 
+      - "4200:80"
+    links:
+      - sinatra-api-server
+  sinatra-api-server:
+    build:
+      dockerfile: Dockerfile
+      context: ./be
+    environment:
+      RACK_ENV: production
+    expose:
+      - "4567"
+    ports: 
+      - "4567:4567"
+    volumes:
+      - ./be:/src
+      - "bundle:/usr/local/bundle"
+  db:
+    image: "mysql:5.6"
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    volumes:
+      - "./my.cnf:/etc/mysql/my.cnf"
+      - db_data:/var/lib/mysql
+    ports:
+      - "3333:3306"
+
+volumes:
+  db_data:
+  bundle:
