@@ -3,7 +3,7 @@ $front_base_color: #38535d;
 $min_width: 750px;
 
 html {
-  min-width: $min_width;
+  min-width: $min_width - 200;
 }
 
 #page--index {
@@ -25,6 +25,8 @@ html {
       width: 40%;
       height: 100vh;
       padding: 0.5rem;
+      max-width: 350px;
+      margin: 0.5rem;
 
       h2 {
         margin: 0.5rem;
@@ -38,11 +40,6 @@ html {
 
         .svg-label {
           width: 60px;
-        }
-
-        .form-column {
-          width: 100%;
-          display: flex;
         }
 
         label {
@@ -65,12 +62,39 @@ html {
     main {
       display: flex;
       flex-wrap: wrap;
-      width: 55%;
+      justify-content: flex-start;
+      flex-grow: 5;
+      .task {    
+        width: 30%;
+        height: 120px;
+        border-radius: 21px;
+        background-color: $back_base_color;
+    
+        margin: 0.5rem;
+        padding: 0.5rem;
+    
+        input {
+          margin: 0.5rem 0;
+          flex-grow: 5;
+        }
+
+        .timestamp {
+          display: flex;
+          justify-content: flex-end;
+          font-size: 0.3rem;
+          color: #ddd;
+        }
+      }
     }
   }
 
-  .task {
-    width: 30%;
+  .form-column {
+    width: 100%;
+    display: flex;
+  }
+
+  .svg-label {
+    width: 60px;
   }
 
   @media (max-width: $min_width) {

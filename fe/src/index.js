@@ -6,9 +6,10 @@ import axios from 'axios';
 window.onload = () => {
   const element = document.querySelector("#page--index");
 
-  axios.get('http://localhost:8080/hello') /* proxyの設定によりSinatraにアクセスが流れる */
+  axios.get('http://localhost:8080/todos') /* proxyの設定によりSinatraにアクセスが流れる */
   .then(function(response) {
-    console.log(response);
+    const data = response['data'];
+    console.log(data);
   })
   .catch(function(error) {
     console.log(error);
