@@ -63,9 +63,12 @@ html {
       display: flex;
       flex-wrap: wrap;
       justify-content: flex-start;
+      align-items: flex-start;
+      align-content: flex-start;
       flex-grow: 5;
       .task {    
         width: 30%;
+        min-width: 220px;
         height: 120px;
         border-radius: 21px;
         background-color: $back_base_color;
@@ -100,16 +103,19 @@ html {
   @media (max-width: $min_width) {
     .view-area {
       flex-direction: column;
+      align-content: center;
       aside {
-        width: 100%;
+        width: 85%;
         height: inherit;
+        max-width: inherit;
       }
       main {
-        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        .task {
+          width: 85%;
+        }
       }
-    }
-    .task {
-      width: 50%;
     }
   }
  }
