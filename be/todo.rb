@@ -1,5 +1,6 @@
 require 'sinatra'
 require 'json'
+
 require './models/todo.rb'
 
 # オートリロード未対応.

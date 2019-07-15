@@ -1,4 +1,4 @@
-version: 0.2                                                                                            
+version: 0.2
  
 phases:
   install:
@@ -15,10 +15,10 @@ phases:
       - echo Build started on `date`
       - echo Building the Docker image...
       #be
-      - docker build -f ./be/Dockerfile -t $BE_IMAGE_REPO_NAME:$IMAGE_TAG 
+      - docker build -f Dockerfile-be.yaml -t $BE_IMAGE_REPO_NAME:$IMAGE_TAG .
       - docker tag $BE_IMAGE_REPO_NAME:$IMAGE_TAG $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$BE_IMAGE_REPO_NAME:$IMAGE_TAG
       #fe
-      - docker build -f ./fe/Dockerfile -t $FE_IMAGE_REPO_NAME:$IMAGE_TAG 
+      - docker build -f Dockerfile-fe.yaml -t $FE_IMAGE_REPO_NAME:$IMAGE_TAG .
       - docker tag $FE_IMAGE_REPO_NAME:$IMAGE_TAG $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$FE_IMAGE_REPO_NAME:$IMAGE_TAG
   post_build:
     commands:
@@ -26,7 +26,7 @@ phases:
       - echo Pushing the Docker image...
       - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$BE_IMAGE_REPO_NAME:$IMAGE_TAG
       - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$FE_IMAGE_REPO_NAME:$IMAGE_TAG
-      - printf '[{"name":"be-sinatra-todo","imageUri":"%s"}, {"name":"fe-sinatra-todo","imageUri":"%s"}]' $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$BE_IMAGE_REPO_NAME:$IMAGE_TAG $AWS_ACCOUNT_ID.dkr.ecr.eu-central-1.amazonaws.com/$FE_IMAGE_REPO_NAME:$IMAGE_TAG > imagedefinitions.json
+      - printf '[{"name":"sinatra-api-server","imageUri":"%s"}, {"name":"frontend","imageUri":"%s"}]' $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$BE_IMAGE_REPO_NAME:$IMAGE_TAG $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$FE_IMAGE_REPO_NAME:$IMAGE_TAG > imagedefinitions.json
 
 artifacts:
   files: imagedefinitions.json

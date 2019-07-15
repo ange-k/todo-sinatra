@@ -1,5 +1,17 @@
+require 'rubygems'
+require 'bundler'
+Bundler.require
+
 require 'sinatra/activerecord'
 require 'sinatra/activerecord/rake'
 require './models/todo.rb'
-ActiveRecord::Base.configurations = YAML.load_file('./database.yml')
-ActiveRecord::Base.establish_connection(:development)
+
+require 'dotenv'
+require 'erb'
+require 'yaml'
+
+Dotenv.load
+yaml = YAML.load(ERB.new(File.read("./database.yml")).result)
+
+ActiveRecord::Base.configurations = yaml
+ActiveRecord::Base.establish_connection(:default)

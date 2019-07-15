@@ -1,8 +1,13 @@
-require 'rubygems'
+require 'dotenv'
+require 'erb'
 require 'active_record'
+require 'yaml'
 
-ActiveRecord::Base.configurations = YAML.load_file('./database.yml')
-ActiveRecord::Base.establish_connection(:development)
+Dotenv.load
+yaml = YAML.load(ERB.new(File.read("./database.yml")).result)
+
+ActiveRecord::Base.configurations = yaml
+ActiveRecord::Base.establish_connection(:default)
 
 class Todo < ActiveRecord::Base
   validates :title, presence: true

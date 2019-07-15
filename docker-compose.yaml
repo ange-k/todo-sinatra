@@ -12,6 +12,12 @@ services:
     links:
       - sinatra-api-server 
   sinatra-api-server:
+    environment:
+      APP_ENV: development
+      DATABASE_USER: root
+      DATABASE_PASSWORD: root
+      DATABASE_HOST: db
+      DATABASE_PORT: 3306
     build:
       dockerfile: Dockerfile.dev
       context: ./be
@@ -36,3 +42,4 @@ volumes:
   node_modules:
   db_data:
   bundle:
+      driver: local
